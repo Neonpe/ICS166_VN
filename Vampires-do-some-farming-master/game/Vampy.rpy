@@ -11,10 +11,11 @@ init python:
             self.dir = "images/Vampy2.0/"
 
         def getPart(self, part, index):
-            return self.dir + part + str(index) + ".png"
+            #return self.dir + part + str(index) + ".png"
+            return self.dir + part + str(index) + "_80s.png"
 
     v = Vampy()
-    
+
     hair, eyes, face, acc, arms, legs = 1, 1, 1, 1, 1, 1
     maxHair, maxEyes, maxFaces, maxAcc, maxArms, maxLegs = [2, 5, 4, 2, 4, 2]
 
