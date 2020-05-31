@@ -30,10 +30,15 @@ label start:
     $ janeD_dead = False
     $ jc_dead = False
     $ ana_dead = False
+    $ frank_dead = False
     $ CurrentChap = 1
     $ total_trust = 10
     $ trust_for_anna = 5
     $ crops_tended_chp4 = 0
+    $ money = 0;
+
+    screen Money_Counter:
+        text "{color=#FFF}{b}Money: $[money]{/b}{/color}" xpos 0.05 ypos 0.05
 
     scene Ranch_Sunset
     with fade
@@ -160,6 +165,8 @@ label Back_To_Story1:
     jd "Fine but he doesn’t go anywhere near this house!"
 
     scene Farmhouse_Day
+
+    show screen Money_Counter
 
     "The rooster crows at the crack of dawn but it's cry is drowned out by Mr.Doe's unrelent banging"
 
@@ -331,7 +338,7 @@ label At_noon:
 
     jd "Wha-"
 
-    jdw "He works hard and doen't ask for money. All he wants is a place to stay."
+    jdw "He works hard and we don't have to pay him much. All he wants is a place to stay."
 
     jd "No, he leaves tomorrow. I still don't trust him."
 
@@ -381,7 +388,9 @@ label Help_Farm:
 
         "However, once dug deep enough, the shade is quite pleasent"
 
-        jd "Phew, hey thanks for helping out."
+        jd "Phew, hey thanks for helping out, I'll throw in a bit of change for your work today."
+
+        $ money = money + 5
 
         mc "Nay, thanketh thee f'r giving me lodging"
 
@@ -409,7 +418,8 @@ label Help_Farm:
 
         mc "I'm going to finish up Mrs. Doe.  W'rry not about me"
 
-        jdw "Are you sure? You never seem to want to eat with us"
+        jdw "Are you sure? You never seem to want to eat with us. At least take your days pay."
+        $ money = money + 5
 
     jump Next_Morning
 

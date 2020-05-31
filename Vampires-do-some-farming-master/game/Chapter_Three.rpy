@@ -178,21 +178,36 @@ label time_with_ana:
 
     Anna "Ok, let's see what Madame Fate has in store for us, what exactly do you want to do?"
     menu:
-        "Ask Anna some questions":
-            $ choice_with_ana  = 1
-            $ total_trust += 1
-            $ trust_for_anna += 1
-            #trust + 1
+        "Ask Anna some questions - $1":
+            if money >= 1:
+                $ choice_with_ana  = 1
+                $ total_trust += 1
+                $ trust_for_anna += 1
+                #trust + 1
+            elif money < 1:
+                Anna "Sorry hun, it appears you don't have enough money. Stop by again sometime."
+                if CurrentChap == 3:
+                    jump Chapter_Three_Morning
 
-        "Consult the crystal ball":
-            $ choice_with_ana = 2
+        "Consult the crystal ball - $5":
+            if money >= 5:
+                $ choice_with_ana = 2
+            elif money < 5:
+                Anna "Sorry hun, it appears you don't have enough money. Stop by again sometime."
+                if CurrentChap == 3:
+                    jump Chapter_Three_Morning
 
     if choice_with_ana == 1:
         menu:
             "Who is't wishes to harmeth me?":
                 Anna "Those you've sinned against surely curse you"
+                "[MCname] reluctantly hands over one dollar."
+                $ money = money - 1
             "wh're am i from?":
                 Anna "Is that important? Or shouldn't you focus on where you will be?"
+                "[MCname] reluctantly hands over one dollar."
+                $ money = money - 1
+
     if choice_with_ana == 2:
         #for here the message will change when the trust of anna increase more
         if trust_for_anna >= 4:
@@ -206,6 +221,9 @@ label time_with_ana:
             unknow "\nOh hello. [MCname] is back. Oh yes!"
             unknow  "\n...Or rid them of their cloak."
         scene Psychic_store
+        "[MCname] mumbles something about a ripoff under his breath as he pays Anna for her services."
+        $ money = money - 5
+
     show VampySprite at left
     mc "Thanketh thee f'r the answ'rs. Farewell"
     show Anna at right

@@ -93,9 +93,9 @@ label meetSteve:
 label Arrest:
     with Dissolve(0.5)
     scene Jail
-    "Well [MCname] wasn't shot in the head this time but he did land in jail"
-    "However, the hands of fate touched him and caused him to frenzy"
-    "With no other choice Steve made the decision to shoot [MCname] in the head"
+    "[MCname] was sent to jail, however, his growing hunger soon sent him into frenzy."
+    "With no other choice, the local cop, Steve, made the decision to shoot [MCname] in the head."
+    "Even with his supernatural healing, [MCname] succumbed to his imprisonment from lack of human blood."
     "The End"
     jump end
 

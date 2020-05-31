@@ -29,6 +29,7 @@ label Chapter1_End_John_Dead:
             mc "Forgiveth me Madam Jane for Sir and Madam Doe has gone to seeth the world. I am to relieve them of their duties."
             mc "Wouldst thou still like for me to deliver thine gift on thine own behalf?"
             janed "Oh really...Then lets just say this is for you. There's no crime in gifting stuff to a QT like you right?"
+            $ money = money + 10
             mc "Hmm...Thankst thou Madam Jane. Now if that is all, I wouldst like to get to sleep."
             mc "I must attend to the crops on the morrow. If thou wouldst excuse me."
         else:
@@ -36,6 +37,7 @@ label Chapter1_End_John_Dead:
             mc "Forgiveth me Madam for Sir and Madam Doe has gone to seeth the world. I am Sir Doe's relative to relieve them of their duties."
             mc "Wouldst thou still like for me to deliver thine gift on thine own behalf?"
             janed "You know what, you can have this. A QT like you living alone? I can come give you more gifts if you want."
+            $ money = money + 10
             mc "If thou wouldst excuse me, I wouldst like to get to sleep. I must attend to the crops on the morrow."
         hide VampySprite
         "Jane leaves with a smile on her face and a skip in her step. [MCname] can only shake his head and close the door."
@@ -98,8 +100,11 @@ label Chapter1_End_Cash_Dead:
     show JD
     jd "Alright we're here. I need you to go over to Jane's shop and pick up the things on this here list for me."
     jd "Here's the money you use to pay."
+    $ money = money + 5
     "The list is quite long, will 5 dollars really be enough?"
-    "If not, maybe Jane will give [MCname] a discount."
+    "Maybe 10 should cover everything."
+    $ money = money + 5
+
     with Dissolve (0.3)
     scene Clothing_Store
     show VampySprite at left
@@ -117,7 +122,8 @@ label Chapter1_End_Cash_Dead:
     janed "Specially considering that no one really knows if there was someone who spent time there anyway."
     mc "I willst keep that in mind. I thank thee for the information."
     janed "No problem hun, don't want any QT's like you goin' missin' on me."
-    janed "Well anyway, here's what John wanted, that'll be 5 dollars just for you."
+    janed "Well anyway, here's what John wanted, that'll be 5 dollars, special price just for a QT like you."
+    $ money = money - 5
 
     with Dissolve(0.3)
     scene Strip_Mall
@@ -129,7 +135,23 @@ label Chapter1_End_Cash_Dead:
         "No":
             jd "Don't yank my chain like that! I can see it right there in your hands!"
             jd "Good to see ya got a sense a humor at least."
+
     jd "Everything's taken care of for today. Let's head back home"
+
+    hide JD
+    with dissolve
+
+    "[MCname] remembers the change he got from Jane."
+
+    menu:
+        "Give the change back to John":
+            show JD
+            with dissolve
+            $ money = money - 5
+            jd "Wow a discount? Jane must've taken a liking to you."
+        "Keep the change":
+            mc "He won't need it anyway."
+
     with Dissolve(0.5)
     scene Farmhouse_Bed
     show VampySprite at left
@@ -197,6 +219,9 @@ label John_info:
                 jd "It's a television! After work, I unwind and relax and watch some of my favorite shows!"
 
         "The rest of the day is filled with small scenes like these"
+        "Eventually [MCname] is paid for his work at the end of the day."
+        $ money = money + 5
+
         with Dissolve(0.5)
         scene Farmhouse_Night
         show VampySprite at left
@@ -209,7 +234,7 @@ label John_info:
 
             show jd at left
             show jdw at right
-            jdw "[MCname] is such a hard worker. We're so lucky he works practically for free."
+            jdw "[MCname] is such a hard worker. We're so lucky he doesn't ask for much."
             jd "I still think he's a wendigo Darling."
             jdw "Oh honey, stop that nonsense and go to sleep."
 
@@ -232,6 +257,7 @@ label John_info:
         with Dissolve(0.3)
         scene Ranch_Sunset
         "Being a hard worker is well, hard but someone needs to tend the crops today."
+        $ money = money + 5
         if CurrentChap == 2:
             jump Chapter_Two_Morning
         if CurrentChap == 3:
@@ -271,7 +297,7 @@ label time_with_jane:
     elif chap_two_days == 2:
         scene Clothing_Store
         show JaneD at right
-        janed "Anna's book was great, I wonder if she ahs any more like it?"
+        janed "Anna's book was great, I wonder if she has any more like it?"
     elif chap_two_days == 3:
         scene Clothing_Store
         show JaneD at right

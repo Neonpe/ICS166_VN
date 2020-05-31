@@ -1,45 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing the color property of style gui_text:
-  File "renpy/common/00start.rpy", line 82, in _init_language
-    renpy.change_language(language)
-  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
-    __update()
-  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
-    renpy.style.rebuild()
-Exception: Color string u'4040404' must be 3, 4, 6, or 8 hex digits long.
+While running game code:
+  File "game/Chapter_Four.rpy", line 194, in script
+    set menuset1
+  File "game/Chapter_Four.rpy", line 206, in <module>
+    $ gone_to_bank = True
+NameError: name 'frank_dead' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\bootstrap.py", line 316, in bootstrap
-    renpy.main.main()
-  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\main.py", line 578, in main
-    run(restart)
-  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\main.py", line 75, in run
-    renpy.translation.init_translation()
-  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\translation\__init__.py", line 558, in init_translation
-    renpy.store._init_language()  # @UndefinedVariable
-  File "renpy/common/00start.rpy", line 82, in _init_language
-    renpy.change_language(language)
-  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\translation\__init__.py", line 646, in change_language
-    i()
-  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
-    __update()
-  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
-    renpy.style.rebuild()
-  File "style.pyx", line 795, in renpy.style.rebuild
-  File "style.pyx", line 788, in renpy.style.build_styles
-  File "style.pyx", line 680, in renpy.style.build_style
-  File "style.pyx", line 680, in renpy.style.build_style
-  File "style.pyx", line 709, in renpy.style.build_style
-  File "style.pyx", line 706, in renpy.style.build_style
-  File "gen/style_functions.pyx", line 757, in style_functions.color_property
-  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\color.py", line 158, in __new__
-    raise Exception("Color string {!r} must be 3, 4, 6, or 8 hex digits long.".format(c))
-Exception: Color string u'4040404' must be 3, 4, 6, or 8 hex digits long.
+  File "game/Chapter_Four.rpy", line 194, in script
+    set menuset1
+  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\ast.py", line 1628, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\exports.py", line 956, in menu
+    condition = renpy.python.py_eval(condition)
+  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\python.py", line 2059, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\neoph\Desktop\renpy-7.3.5-sdk\renpy\python.py", line 2052, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/Chapter_Four.rpy", line 206, in <module>
+    $ gone_to_bank = True
+NameError: name 'frank_dead' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Dracula 1.0
-Sat May 30 13:49:02 2020
+Sat May 30 19:48:21 2020

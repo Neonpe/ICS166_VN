@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/Images.rpy", line 49: invalid syntax
-    im.Scale("images/Steve_Cop/Steve.png", , 600)
-                                            ^
+File "game/Chapter_Four.rpy", line 116: expected statement.
+    mc = "Unfortunately nay, the Does did stay out last night of all and I wasn't able to passeth 'long the message."
+       ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sat May 30 14:03:45 2020
+Sat May 30 19:41:28 2020

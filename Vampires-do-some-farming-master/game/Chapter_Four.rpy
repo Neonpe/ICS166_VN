@@ -4,6 +4,9 @@ label Start_chp4:
     $ gone_to_bank = False
     $ CurrentChap = 4
     $ bonfire_invite = False
+    $ keepMoney = False
+    $ frank_dead = False
+
     scene Farmhouse_Day
     "The rooster crows but [MCname] is too exhausted to hear it.
     \nHard work in the sun makes one really thirsty."
@@ -36,11 +39,19 @@ label Meeting_the_Banker:
     scene Farmhouse_Night
     show VampySprite
     mc "I bethink I did see wh're those gents hath kept all their wage. Th're shouldst beest enow to payeth in th're"
+    "[MCname] finds the Does' wages to take to the bank."
+    $ money = money + 20
+
+    menu:
+        "Pay the bill for the farm":
+            $ keepMoney = False
+        "Keep the money for yourself":
+            $ keepMoney = True
 
     scene Farmhouse_Day
     show VampySprite
 
-    mc "Timeth to taketh the wage to the bank"
+    mc "I must headeth to the bank."
     jump Going_to_the_Bank
 
 
@@ -75,10 +86,19 @@ label Meeting_the_Banker2:
     mc "That gent hath said to bringeth the bill payment to the bank tom'rrow because that gent can't waiteth any longeth'r"
     jd "Alright, I'll get it together in the morning and send you up there."
 
-    scene Farmhouse_Day
+    scene Farmhouse_Bed
     show VampySprite
+    jd "*Shouting from the other room* [MCname] can you get the payment and take it to the bank, I'm a little busy? The money should be in the drawer by the chair."
+    "[MCname] finds the Does' wages to take to the bank."
+    $ money = money + 20
 
-    mc "Timeth to taketh the wage to the bank"
+    menu:
+        "Pay the bill for the farm":
+            $ keepMoney = False
+        "Keep the money for yourself":
+            $ keepMoney = True
+
+    mc "I must headeth to the bank"
     jump Going_to_the_Bank
 
 label Going_to_the_Bank:
@@ -87,9 +107,63 @@ label Going_to_the_Bank:
     with dissolve
 
     Franklin "Hey! Nice to see you again. Do you have the payment?"
-    mc "Aye h're t is"
-    Franklin "Thank you have a great day."
-    jump Lets_eat
+    if keepMoney == False:
+        mc "Aye h're t is"
+        $ money = money - 20
+        Franklin "Thank you have a great day."
+        jump Lets_eat
+
+    elif keepMoney == True and jd_dead == False:
+        mc "Unfortunately nay, the Does did stay out last night of all and I wasn't able to passeth 'long the message."
+        Franklin "Well ok, I guess just this once I can pay another visit some other time."
+        hide Franklin
+        with dissolve
+        "Thanks to his slick tongue, [MCname] heads home with an extra twenty dollars in his pocket."
+        jump Lets_eat
+
+    elif keepMoney == True and jd_dead == True:
+        mc "Unfortunately the Does art still abroad and I wast unable to findeth the payment."
+        mc "Couldst thee cometh to the farm with me to searcheth for it?"
+        Franklin "Well the bank does need the money soon, I guess I could head over for a bit."
+
+        scene Farmhouse_Bed
+        with fade
+
+        show VampySprite at left
+        with dissolve
+
+        show Franklin at right
+        with dissolve
+
+        Franklin "Alright I'll check this side, you get the other one."
+
+        menu:
+            "Get rid of Franklin and get him off my back about the farm":
+                "Franklin is too busy searching to notice [MCname] appear behind him."
+                Franklin "[MCname]!, Any luck findi-"
+                "Without a clue what happened, Franklin fell prey to [MCname]'s insatiable hunger."
+                $ frank_dead = True
+                mc "Mine own hunger is getting stronger with each passing moment."
+                mc "I must findeth who is't i am and where i cameth from soon."
+                jump Lets_eat
+
+            "Keep up the act and search for the payment":
+                "Franklin turns around while searching but notices something sticking out of your pocket."
+                Franklin "Wait a minute, is that the payment in your pocket!"
+                menu:
+                    "Kill Franklin":
+                        mc "I apologizeth Franklin, thee knoweth too much."
+                        "Franklin doesn't even have a chance to react as [MCname] lunges for his jugular."
+                        $ frank_dead = True
+                        mc "I'm killing to feedeth at which time I'm not even fill'd with pangs of hunger."
+                        mc "I must findeth who is't i am and where i cameth from soon."
+                        jump Lets_eat
+
+                    "Admit to stealing the money":
+                        Franklin "And I thought you were a respectable man. I'm turning you in to the police!"
+                        mc "Thou art making a grave mistake Franklin."
+                        jump Arrest
+
 
 label Lets_eat:
     scene Ranch_Sunset
@@ -116,9 +190,7 @@ label CHP4_morning:
     "It's true, things are always a little easier after the first time."
     mc "Anon yond I'm full, lets wend gath'r some m're inf'rmation"
     hide VampySprite
-    default menuset1 = set()
     menu:
-        set menuset1
         "Tend to the crops" if crops_tended_chp4 == 0:
             $ crops_tended_chp4 = 1
             jump CHP4_crops
@@ -129,14 +201,16 @@ label CHP4_morning:
             jump CHP4_Creek
         "Go to the Psychic Store" if ana_dead == False:
             jump CHP4_Psychic
-        "Go to the Bank" if gone_to_bank == False:
+        "Go to the Bank" if gone_to_bank == False and frank_dead == False:
             $ gone_to_bank = True
             jump Time_with_frank
     jump CHP4_end
 
 label CHP4_crops:
     if jd_dead:
-        "It aint much, but it's honest work"
+        mc "It aint much, but it's honest work."
+        "[MCname] profits $5 from the day."
+        $ money = money + 5
         jump CHP4_morning
     else:
         jump John_info
