@@ -843,7 +843,7 @@ label Anna_And_Jane_Alive:
         "After the wild series of events from the past few days, [MCname] continues to run the Does' farm in their \"absence\", living out the rest of his days in peace."
         "(With the exception of consistently feeding on the townspeople)"
 
-        "But if Jane was the one who someoned him, was she also behind the that dark voice in his head? Or was it something else entirely?"
+        "But if Jane was the one who someoned him, was she also behind that dark voice in his head? Or was it something else entirely?"
         "The End"
         jump end
 
@@ -1043,7 +1043,7 @@ label Johnny_And_Jane_Alive:
         "After the wild series of events from the past few days, [MCname] continues to run the Does' farm in their \"absence\", living out the rest of his days in peace."
         "(With the exception of consistently feeding on the townspeople)"
 
-        "But if Jane was the one who someoned him, was she also behind the that dark voice in his head? Or was it something else entirely?"
+        "But if Jane was the one who someoned him, was she also behind that dark voice in his head? Or was it something else entirely?"
         "The End"
         jump end
 

@@ -2,6 +2,8 @@
 label Start_chp4:
     $ jc_info = 0
     $ gone_to_bank = False
+    $ gone_to_psychic = False
+    $ gone_to_supplies = False
     $ CurrentChap = 4
     $ bonfire_invite = False
     $ keepMoney = False
@@ -143,6 +145,8 @@ label Going_to_the_Bank:
                 Franklin "[MCname]!, Any luck findi-"
                 "Without a clue what happened, Franklin fell prey to [MCname]'s insatiable hunger."
                 $ frank_dead = True
+                hide Franklin
+                with dissolve
                 mc "Mine own hunger is getting stronger with each passing moment."
                 mc "I must findeth who is't i am and where i cameth from soon."
                 jump Lets_eat
@@ -155,6 +159,8 @@ label Going_to_the_Bank:
                         mc "I apologizeth Franklin, thee knoweth too much."
                         "Franklin doesn't even have a chance to react as [MCname] lunges for his jugular."
                         $ frank_dead = True
+                        hide Franklin
+                        with dissolve
                         mc "I'm killing to feedeth at which time I'm not even fill'd with pangs of hunger."
                         mc "I must findeth who is't i am and where i cameth from soon."
                         jump Lets_eat
@@ -184,7 +190,7 @@ label Lets_eat:
     jump CHP4_morning
 
 label CHP4_morning:
-    $ crops_tended_chp4 = 0
+#    $ crops_tended_chp4 = 0
     scene Farmhouse_Day
     show VampySprite
     "It's true, things are always a little easier after the first time."
@@ -194,12 +200,14 @@ label CHP4_morning:
         "Tend to the crops" if crops_tended_chp4 == 0:
             $ crops_tended_chp4 = 1
             jump CHP4_crops
-        "Go get supplies" if janeD_dead == False:
+        "Go get supplies" if janeD_dead == False and gone_to_supplies == False:
+            $ gone_to_supplies = True
             jump CHP4_Supplies
         "Go to the creek" if jc_dead == False and jc_info == 0:
             $ jc_info = 1
             jump CHP4_Creek
-        "Go to the Psychic Store" if ana_dead == False:
+        "Go to the Psychic Store" if ana_dead == False and gone_to_psychic == False:
+            $ gone_to_psychic = True
             jump CHP4_Psychic
         "Go to the Bank" if gone_to_bank == False and frank_dead == False:
             $ gone_to_bank = True
@@ -292,21 +300,35 @@ label CHP4_Psychic:
 
     Anna "Really? Well, let's see what Madame Fate has in store for us. Please ask a question!"
     menu:
-        "Ask Anna some questions":
-            $ choice_with_ana  = 1
-            $ total_trust += 1
-            $ trust_for_anna += 1
-            #trust + 1
+        "Ask Anna some questions - $1":
+            if money >= 1:
+                $ choice_with_ana  = 1
+                $ total_trust += 1
+                $ trust_for_anna += 1
+                #trust + 1
+            elif money < 1:
+                Anna "Sorry hun, it appears you don't have enough money. Stop by again sometime."
+                jump CHP4_morning
 
-        "Consult the crystal ball":
-            $ choice_with_ana = 2
+        "Consult the crystal ball - $5":
+            if money >= 5:
+                $ choice_with_ana = 2
+            elif money < 5:
+                Anna "Sorry hun, it appears you don't have enough money. Stop by again sometime."
+                jump CHP4_morning
+
+
     if choice_with_ana == 1:
         menu:
             "Who is't is Johnny?":
                 Anna "A poor excuse for a human being."
+                "[MCname] reluctantly hands over one dollar."
+                $ money = money - 1
 
             "Who is't is cloak'd in chaos?":
                 Anna "Everyone is cloaked in a little bit of chaos. Don't you agree?"
+                "[MCname] reluctantly hands over one dollar."
+                $ money = money - 1
 
     if choice_with_ana == 2:
         scene Crystal_ball
@@ -324,6 +346,9 @@ label CHP4_Psychic:
             unknow "\nOh hello. [MCname] is back. Oh yes!"
             unknow  "\n...Or rid them of their cloak."
         scene Psychic_store
+        "[MCname], still unsatisfied, pays Anna for her services."
+        $ money = money - 5
+
     show VampySprite at left
     mc "Yond wast m're helpful than lasteth timeth. \nI wilt figure this out with haste"
     show Anna at right
@@ -331,7 +356,6 @@ label CHP4_Psychic:
     hide VampySprite
     show Anna at center
     Anna "Does the ball really work? Sometimes, he just stares at it for 10 mintes, thanks me and leaves..."
-    Anna "Ah. I really should start charging him for that."
     jump CHP4_morning
 
 label Time_with_frank:
