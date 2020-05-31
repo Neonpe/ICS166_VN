@@ -10,20 +10,36 @@ label Start_chp4:
     $ frank_dead = False
 
     scene Farmhouse_Day
+    with fade
+
     "The rooster crows but [MCname] is too exhausted to hear it.
     \nHard work in the sun makes one really thirsty."
+
     if jd_dead == True:
         jump Meeting_the_Banker
+
     show JD at right
+    with dissolve
+
     show JDW at left
+    with dissolve
+
     jd "[MCname], Jannet and I will be goin to town to get some food for dinner. Tend the crops while we're gone."
+
     hide JD
+    with dissolve
+
     hide JDW
+    with dissolve
+
     jump Meeting_the_Banker2
 
 label Meeting_the_Banker:
     "Just after a light lunch, there is a knocking at the door"
+
     show Franklin at left
+    with dissolve
+
     newCharacter "Oh I have never seen you here before. Who are you?"
     mc "I am a distant relative. Sir and Madam Doe wenteth to seeth the w'rld and those folk hath asked me to cometh help those folk on the farm until those folk receiveth backeth"
     mc "Who is't art thee?"
@@ -39,7 +55,11 @@ label Meeting_the_Banker:
     Franklin "Bring it to the Bank next to the mall."
 
     scene Farmhouse_Night
+    with fade
+
     show VampySprite
+    with dissolve
+
     mc "I bethink I did see wh're those gents hath kept all their wage. Th're shouldst beest enow to payeth in th're"
     "[MCname] finds the Does' wages to take to the bank."
     $ money = money + 20
@@ -51,7 +71,11 @@ label Meeting_the_Banker:
             $ keepMoney = True
 
     scene Farmhouse_Day
+    with fade
+
     show VampySprite
+    with dissolve
+
 
     mc "I must headeth to the bank."
     jump Going_to_the_Bank
@@ -61,6 +85,7 @@ label Meeting_the_Banker2:
     "Just after a light lunch, there is a knocking at the door"
 
     show Franklin at left
+    with dissolve
 
     newCharacter "Oh I have never seen you here before. Who are you?"
 
@@ -79,9 +104,13 @@ label Meeting_the_Banker2:
     Franklin "Bring it to the Bank next to the mall."
 
     scene Farmhouse_Night
+    with fade
 
     show JD_Sleepy at right
+    with dissolve
+
     show VampySprite at left
+    with dissolve
 
     mc "Franklin from the bank cameth by the present day"
     jd "Well, what did he come for?"
@@ -89,7 +118,11 @@ label Meeting_the_Banker2:
     jd "Alright, I'll get it together in the morning and send you up there."
 
     scene Farmhouse_Bed
+    with fade
+
     show VampySprite
+    with dissolve
+
     jd "*Shouting from the other room* [MCname] can you get the payment and take it to the bank, I'm a little busy? The money should be in the drawer by the chair."
     "[MCname] finds the Does' wages to take to the bank."
     $ money = money + 20
@@ -105,10 +138,13 @@ label Meeting_the_Banker2:
 
 label Going_to_the_Bank:
     scene Bank_Lobby
+    with fade
+
     show Franklin
     with dissolve
 
     Franklin "Hey! Nice to see you again. Do you have the payment?"
+
     if keepMoney == False:
         mc "Aye h're t is"
         $ money = money - 20
@@ -118,8 +154,10 @@ label Going_to_the_Bank:
     elif keepMoney == True and jd_dead == False:
         mc "Unfortunately nay, the Does did stay out last night of all and I wasn't able to passeth 'long the message."
         Franklin "Well ok, I guess just this once I can pay another visit some other time."
+
         hide Franklin
         with dissolve
+
         "Thanks to his slick tongue, [MCname] heads home with an extra twenty dollars in his pocket."
         jump Lets_eat
 
@@ -145,8 +183,10 @@ label Going_to_the_Bank:
                 Franklin "[MCname]!, Any luck findi-"
                 "Without a clue what happened, Franklin fell prey to [MCname]'s insatiable hunger."
                 $ frank_dead = True
+
                 hide Franklin
                 with dissolve
+
                 mc "Mine own hunger is getting stronger with each passing moment."
                 mc "I must findeth who is't i am and where i cameth from soon."
                 jump Lets_eat
@@ -159,8 +199,10 @@ label Going_to_the_Bank:
                         mc "I apologizeth Franklin, thee knoweth too much."
                         "Franklin doesn't even have a chance to react as [MCname] lunges for his jugular."
                         $ frank_dead = True
+
                         hide Franklin
                         with dissolve
+
                         mc "I'm killing to feedeth at which time I'm not even fill'd with pangs of hunger."
                         mc "I must findeth who is't i am and where i cameth from soon."
                         jump Lets_eat
@@ -173,8 +215,13 @@ label Going_to_the_Bank:
 
 label Lets_eat:
     scene Ranch_Sunset
+    with fade
+
     "The sun sets on another hard day's work. However, as night approaches so do the hands of fate."
+
     scene Black_Wall
+    with fade
+
     menu:
         "Kill John and Jannet" if jd_dead == False:
             $ jd_dead = True
@@ -192,10 +239,16 @@ label Lets_eat:
 label CHP4_morning:
 #    $ crops_tended_chp4 = 0
     scene Farmhouse_Day
+    with fade
+
     show VampySprite
+    with dissolve
+
     "It's true, things are always a little easier after the first time."
     mc "Anon yond I'm full, lets wend gath'r some m're inf'rmation"
     hide VampySprite
+    with dissolve
+
     menu:
         "Tend to the crops" if crops_tended_chp4 == 0:
             $ crops_tended_chp4 = 1
@@ -225,17 +278,24 @@ label CHP4_crops:
 
 label CHP4_Supplies:
 #meet jane say im ready to meet your friends go to bonfire later tonight
-    with Dissolve(0.3)
     scene Clothing_Store
+    with fade
+
     show VampySprite at left
+    with dissolve
+
     show JaneD at right
+    with dissolve
+
     janed "Oh hi there! What can I help you with?"
     mc "I am h're to seeth thee madam Jane."
+
     if Jane != 3:
         $ Jane = 3
         janed "Oh that's sweet of you hun. I still haven't gotten your name. What was it?"
         mc "Mine own nameth is [MCname].  Prithee useth t well."
         janed "Such a lovely name!"
+
     default menuset2 = set()
     menu:
         set menuset2
@@ -252,12 +312,18 @@ label CHP4_Supplies:
     jump CHP4_morning
 
 label CHP4_Creek:
-    with Dissolve(0.5)
     scene Creek_Bridge
+    with fade
+
     show VampySprite at left
+    with dissolve
+
     show JC at right
+    with dissolve
+
     jc "What's up man, *cough cough* I havent seen you in a while."
     mc "Greetings [jc]."
+
     default menuset3 = set()
     menu:
         set menuset3
@@ -276,17 +342,28 @@ label CHP4_Creek:
     jc "Looks like it's getting pretty late."
     mc "I concur. I shalt depart anon"
     jc "Yeeah take care."
-    with Dissolve(0.5)
+
     scene Farmhouse_Bed
+    with fade
+
     show VampySprite at left
+    with dissolve
+
     mc "I learn'd alot from that gent the present day. I bethink i am getting clos'r to the sooth."
     jump CHP4_morning
 
 label CHP4_Psychic:
     scene Psychic_store
+    with fade
+
     show Anna at right
+    with dissolve
+
     show VampySprite at left
+    with dissolve
+
     Anna "HI, [MCname], welcome back, what brings you back here?"
+
     menu:
         "Thy power, yond's wherefore i am cometh back hither":
             $ total_trust += 1
@@ -299,6 +376,7 @@ label CHP4_Psychic:
             #trust -1
 
     Anna "Really? Well, let's see what Madame Fate has in store for us. Please ask a question!"
+
     menu:
         "Ask Anna some questions - $1":
             if money >= 1:
@@ -332,35 +410,63 @@ label CHP4_Psychic:
 
     if choice_with_ana == 2:
         scene Crystal_ball
+        with fade
+
         if trust_for_anna >= 5:
             unknow "\nYou probably already know this but..."
             unknow "\nNot everyone can be trusted."
+
         elif trust_for_anna >= 4:
             scene Crystal_ball
+            with fade
+
             unknow "\nAh make sure to feed [MCname] every now and again"
+
         if trust_for_anna >= 3:
             scene Crystal_ball
+            with fade
+
             unknow "\nThat's the entire ominous message for [MCname]"
+
         elif trust_for_anna >= 2:
             scene Crystal_ball
+            with fade
+
             unknow "\nOh hello. [MCname] is back. Oh yes!"
             unknow  "\n...Or rid them of their cloak."
+
         scene Psychic_store
+        with fade
+
         "[MCname], still unsatisfied, pays Anna for her services."
         $ money = money - 5
 
     show VampySprite at left
+    with dissolve
+
     mc "Yond wast m're helpful than lasteth timeth. \nI wilt figure this out with haste"
+
     show Anna at right
+    with dissolve
+
     Anna "Thanks for visiting again please come again!"
+
     hide VampySprite
+    with dissolve
+
     show Anna at center
+    with dissolve
+
     Anna "Does the ball really work? Sometimes, he just stares at it for 10 mintes, thanks me and leaves..."
     jump CHP4_morning
 
 label Time_with_frank:
     scene Bank_Lobby
+    with fade
+
     show Franklin at right
+    with dissolve
+
     default menuset4 = set()
     menu:
         set menuset4
@@ -409,6 +515,8 @@ label bank_job:
 
 label CHP4_end:
     scene Drak_pic
+    with fade
+
     unknow "Four are needed. How many have been collected?"
 
     jump Start_chp5 #first label of chapter 5

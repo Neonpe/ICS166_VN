@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/Chapter_Four.rpy", line 116: expected statement.
-    mc = "Unfortunately nay, the Does did stay out last night of all and I wasn't able to passeth 'long the message."
-       ^
+File "game/Vampy.rpy", line 120: u'fonts' is not a keyword argument or valid child for the text statement.
+    text "{color=#d3d3d3}{size=24}{font="fonts/arial.ttf"} Hair{/font}{/color}{/sizeS}"
+                                              ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sat May 30 19:41:28 2020
+Sat May 30 21:58:45 2020

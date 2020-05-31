@@ -3,14 +3,14 @@
 ####################################################
 
 #Characters
-define mc = Character("[MCname]", color=v.color, who_font="fonts/Precious.ttf", what_font="fonts/Precious.ttf")
-define jd = Character("[JDname]", who_font="fonts/ALGER.ttf", what_font="fonts/ALGER.ttf")
-define jdw = Character("[JDWname]", who_font="fonts/ITCBLKAD.ttf", what_font="fonts/ITCBLKAD.ttf")
-define janed = Character("[janedName]", who_font="fonts/PORKYS.ttf", what_font="fonts/PORKYS.ttf")
-define jc = Character("[JCname]", who_font="fonts/comic.ttf", what_font="fonts/comic.ttf")
+define mc = Character("[MCname]", color=v.color, who_font="fonts/arial.ttf", what_font="fonts/arial.ttf")
+define jd = Character("[JDname]", who_font="fonts/arial.ttf", what_font="fonts/arial.ttf")
+define jdw = Character("[JDWname]", who_font="fonts/arial.ttf", what_font="fonts/arial.ttf")
+define janed = Character("[janedName]", who_font="fonts/arial.ttf", what_font="fonts/arial.ttf")
+define jc = Character("[JCname]", who_font="fonts/arial.ttf", what_font="fonts/arial.ttf")
 
-define unknow =  Character("[unknowName]", color=v.color, who_font="fonts/Precious.ttf", what_font="fonts/Precious.ttf")
-define Anna = Character("[AnnaName]", who_font="fonts/ITCBLKAD.ttf", what_font="fonts/ITCBLKAD.ttf") #new npc in chapter3
+define unknow =  Character("[unknowName]", color=v.color, who_font="fonts/arial.ttf", what_font="fonts/arial.ttf")
+define Anna = Character("[AnnaName]", who_font="fonts/arial.ttf", what_font="fonts/arial.ttf") #new npc in chapter3
 define Franklin = Character("Franklin")
 define newCharacter = Character("???")
 define Steve = Character("Steve")
@@ -18,7 +18,6 @@ define Steve = Character("Steve")
 # The script of the game goes in this file.
 
 label start:
-
     $ JDname = "???"
     $ JDWname = "Jannet Doe"
     $ janedName = "???"
@@ -40,14 +39,16 @@ label start:
     screen Money_Counter:
         text "{color=#FFF}{b}Money: $[money]{/b}{/color}" xpos 0.05 ypos 0.05
 
+
     scene Ranch_Sunset
     with fade
 
-    "*Whoosh noise* Crash! Bang *oh my leg sfx"
+    "*Whoosh noise* Crash! Bang *oh my leg*"
 
     jd "What in tarnation?! That spooked my horses!"
 
     scene Woods_Sunset
+    with fade
 
     jd "Well...What do we have here? "
 
@@ -60,37 +61,46 @@ label start:
 
     show JD
     with dissolve
-    jd "I’ll take ya back to my place, we can wash that soot and dust off of ya there. Name’s John Doe if ur interested."
+
+    jd "I’ll take ya back to my place, we can wash that soot and dust off of ya there. Name’s John Doe if you're interested."
 
     scene Black_Wall
+    with fade
 
     jd "Come out to the front after ya freshen up some. Feel free to wear what I’ve got lying around."
 
     call screen customization()
 
     show VampySprite
+    with dissolve
 
     scene Farmhouse_Night
     with fade
 
     show VampySprite at left
     with dissolve
+
     pause
+
     show JD_With_Gun at right
+    with dissolve
+
     jd "*Cocks rifle* Alrighty, so what were ya doing in those woods?"
 
     menu:
         "Tell the truth":
             jump Tell_the_truth
-        "Keep Silent":
+        "Keep silent":
             jump Tell_a_lie
         "Make something up":
             $ y = renpy.input("better be persuasive")
             jump Tell_a_lie
 
+
 label Tell_the_truth:
     mc "I can't rememb'r"
-    jd "hmph, if you're gonna lie, at least make it believable. I’ll give ya one more chance to get your story straight."
+    jd "Hmph, if you're gonna lie, at least make it believable. I’ll give ya one more chance to get your story straight."
+
     menu:
         "Keep Silent":
             jump Tell_a_lie
@@ -98,13 +108,16 @@ label Tell_the_truth:
             $ y = renpy.input("better be persuasive")
             jump Tell_a_lie
 
+
 label Tell_a_lie:
-    jd "hmph, guess a man’s gotta have his secrets huh? *Fires gun* "
+    jd "Hmph, guess a man’s gotta have his secrets huh? *Fires gun*"
     jd "I swear, ya harm me or my wife and the next one’s goin between the eyes. Now get off my property!"
 
     scene Night_Highway
+    with fade
 
-    mc "fie. What shalt I do? the weath'r is bitter cold and th're is nay roof ov'r mine own headeth"
+    mc "Fie. What shalt I do? The weath'r is bitter cold and th're is nay roof ov'r mine own headeth."
+
     menu:
         "Keep going down the road":
             $ choice1 = 1
@@ -112,75 +125,94 @@ label Tell_a_lie:
             $ choice1 = 2
 
     scene Farmhouse_Bed
+    with fade
 
     show JDW at left
+    with dissolve
 
     jdw "Did you really have to shoot at that poor man Honey?"
 
     show JD_Sleepy at right
+    with dissolve
 
     jd "I don't like the color of his skin or the way he speaks. Everything about him is off."
 
     jdw "Honey! That’s racist!"
 
-    jd "Yeah, well I definitely don’t like how he ended up in that crater in the woods! I swear that “man” is a wendigo darling"
+    jd "Yeah, well I definitely don’t like how he ended up in that crater in the woods! I swear that “man” is a wendigo darling."
 
     "*knock knock*"
 
     jd "He better not have come back…"
 
     hide JDW
+    with dissolve
+
     hide JD_Sleepy
+    with dissolve
 
     "*knock knock*"
 
     show JD
+    with dissolve
 
     jd "I’m coming!  I’m coming!"
 
-    "Mr. Doe cocks his rifle and slams open the door"
+    "Mr. Doe cocks his rifle and slams open the door."
 
-    jd "God dammit"
+    jd "God dammit."
 
     scene Farmhouse_Night
+    with fade
 
     show VampySprite at left
+    with dissolve
+
     show JD_With_Gun at right
+    with dissolve
 
     if choice1 == 1:
-        mc " I'm s'rry mr.  Doe, I seemeth to hath gotten lost and madeth mine own way backeth here."
-        mc "The weath'r is bitter cold tonight.  Shall thee alloweth me to stayeth in thine barn?"
+        mc "I'm s'rry Mr. Doe, I seemeth to hath gotten lost and madeth mine own way backeth here."
+        mc "The weath'r is bitter cold tonight. Shall thee alloweth me to stayeth in thine barn?"
         jump Back_To_Story1
 
     if choice1 == 2:
-        mc "I apologizeth f'r falsing Mr.  Doe but thee wouldst not believeth me coequal if 't be true I toldeth the sooth."
-        mc " The weath'r is bitter cold tonight.  Shall thee alloweth me to stayeth in thine barn?"
+        mc "I apologizeth f'r falsing Mr. Doe, but thee wouldst not believeth me coequal if 't be true I toldeth the sooth."
+        mc "The weath'r is bitter cold tonight. Shall thee alloweth me to stayeth in thine barn?"
         jump Back_To_Story1
 
-label Back_To_Story1:
 
+label Back_To_Story1:
     show JDW
+    with dissolve
+
     jdw "Honey just let the poor man stay for a while. He can help around the farm to earn his keep."
 
-    jd "Fine but he doesn’t go anywhere near this house!"
+    jd "Fine, but he doesn’t go anywhere near this house!"
 
     scene Farmhouse_Day
+    with fade
 
     show screen Money_Counter
 
-    "The rooster crows at the crack of dawn but it's cry is drowned out by Mr.Doe's unrelent banging"
+    "The rooster crows at the crack of dawn but its cry is drowned out by Mr. Doe's unrelent banging."
 
     show JD
+    with dissolve
 
     jd "Rise and shine pale boy! We’re going to town for supplies today."
 
     show VampySprite at left
+    with dissolve
 
     mc "Hiss!"
 
-    jd "Don’t hiss at me Wendigo! Ur gonna get in the truck and like it!"
+    jd "Don’t hiss at me Wendigo! You're gonna get in the truck and like it!"
 
     scene Sad_Farm_1
+    with fade
+
+    "John and [MCname] begin passing many shut down farms on their way to town."
 
     menu:
         "...":
@@ -189,6 +221,7 @@ label Back_To_Story1:
             $ choice1 = 1
 
     scene Sad_Farm_2
+    with fade
 
     menu:
         "...":
@@ -197,6 +230,7 @@ label Back_To_Story1:
             $ choice1 = 1
 
     scene Sad_Farm_3
+    with fade
 
     menu:
         "...":
@@ -205,27 +239,31 @@ label Back_To_Story1:
             $ choice1 = 2
 
     if choice1 == 1:
-        jd "Got something to say spit it out already"
+        jd "Got something to say? Spit it out already."
         mc "Wherefore art th're so many exsufflicate farms?"
         jump Back_To_Story2
 
     if choice1 == 2:
         jump Back_To_Story2
 
+
 label Back_To_Story2:
-    jd "ah that...Farm crisis. A few years ago, land was really cheap and Russia really wanted wheat."
-    jd "But now, there’s too much wheat, and  no one wants to buy. People can’t pay for their farms anymore so they had to give up their farms."
-    jd "Frank's practically eaten em all up and spit em out to rot."
+    jd "Ah that...Farm crisis. A few years ago, land was really cheap and Russia really wanted wheat."
+    jd "But now there’s too much wheat, and no one wants to buy. People can’t pay for their farms anymore so they had to give them up."
+    jd "Frank's practically eaten 'em all up and spit 'em out to rot."
     jd "Sad thing really."
 
-    mc "I offer mine own condolences"
+    mc "I offer mine own condolences."
 
     jd "Thanks…"
 
     scene Strip_Mall
+    with fade
 
     show JD
-    jd "I’m gonna buy supplies. Feel free to tag along or wander off but if ya wander off, be back here by noon. I’ll need help loading the truck"
+    with dissolve
+
+    jd "I’m gonna buy supplies. Feel free to tag along or wander off, but if ya wander off be back here by noon. I’ll need help loading the truck."
 
     $ Jane = 0
     $ Cash = 0
@@ -240,36 +278,41 @@ label Back_To_Story2:
             jump Wander
 
 label Tag_Along:
-    jd "Alrighty then, just hang out around the mall. I’ll be done soon"
+    jd "Alrighty then, just hang out around the mall. I’ll be done soon."
 
     scene Clothing_Store
+    with fade
 
     show VampySprite at left
+    with dissolve
 
     mc "So many styles of robes!"
 
     janed "Hiya QT! Anythin suit your fancy?"
 
-    mc "Hiss! An apparition hast hath appeared!"
+    mc "Hiss! An apparition hath appeared!"
 
     $ janedName = "Jane Dough"
+
     show JaneD at right
+    with dissolve
 
     janed "I’m not a ghost silly. I’m Jane, Jane Dough!"
 
     mc "Doth thee has't any relation to John Doe?"
 
-    janed "No no! My last name is D-O-U-G-H not D-O-E"
+    janed "No no! My last name is D-O-U-G-H not D-O-E."
 
-    mc "Well then, colours me"
+    mc "Well then, colours me."
 
-    janed "mm, welp if there’s anything you need, just holler. K QT?"
+    janed "Mm, welp if there’s anything you need, just holler. K QT?"
 
-    mc "Thanketh thee"
+    mc "Thanketh thee."
 
     hide JaneD
+    with dissolve
 
-    "A clock in the clothing store chimes as [MCname] leaves"
+    "A clock in the clothing store chimes as [MCname] leaves."
 
     jump At_noon
 
@@ -277,58 +320,72 @@ label Wander:
     jd "Well then, feel free to explore the town. But remember, here at noon."
 
     scene Creek_Bridge
+    with fade
 
     show VampySprite at left
+    with dissolve
 
     mc "Mine own! What a lovely sight..."
 
     jc "*Cough cough* *Hack hack*"
 
-    mc "ruin'd by such unsightly sounds…"
+    mc "Ruin'd by such unsightly sounds…"
 
     jc "*WHEEZE*"
 
-    "After following the sounds, [MCname] arives at it's source"
+    "After following the sounds, [MCname] arives at it's source."
 
     mc "Sir, art thee tis fine?"
 
     $ JCname = "Johnny Cash"
+
     show JC at right
+    with dissolve
 
     jc "*Puffs* yeeeeeah maan. Name’s Johnny Cash. Call me JC if you want man. *cough*"
 
     jc "Heyyy man, you wanna try some?"
 
-    mc "Nay  I'm fine. I has't a meeting with an aquantance"
+    mc "Nay I'm fine. I has't a meeting with an aquantance."
 
-    jc "Oh suure man, wellll come back sooon"
+    jc "Oh suure man, wellll come back sooon."
 
     hide JC
+    with dissolve
 
-    "With a beautiful sight fouled by the company, [MCname] decides it's better to head back"
+    "With a beautiful sight fouled by the company, [MCname] decides it's better to head back."
 
     jump At_noon
 
 label At_noon:
 
     scene Strip_Mall
+    with fade
+
     show JD
+    with dissolve
 
-    jd "Alrighty, ur back!"
+    jd "Alrighty, you're back!"
 
-    jd "Help me load this stuff in the truck and lets go home"
+    jd "Help me load this stuff in the truck and lets go home."
 
     scene Black_Wall
+    with fade
 
-    "[MCname] returns to the Doe farm and spend the rest of the day helping Mr. Doe"
+    "[MCname] returns to the Doe farm and spends the rest of the day helping Mr. Doe."
 
     scene Farmhouse_Bed
+    with fade
+
     show JD at right
+    with dissolve
+
     show JDW at left
+    with dissolve
 
     jdw "So Honey? How was he today?"
 
-    jd "Ok I guess. Feels like he doesn't like the sun much. He kept running back to the shade every 10 minutes"
+    jd "Ok I guess. Feels like he doesn't like the sun much. He kept running back to the shade every 10 minutes."
 
     jdw "But he worked really hard Honey. Even worked through dinner."
 
@@ -348,8 +405,8 @@ label At_noon:
 
     jd "Fine, he can stick around."
 
-label Next_Morning:
 
+label Next_Morning:
     if Doe == 3:
         jump Frenzy
     if Jane == 3:
@@ -358,18 +415,21 @@ label Next_Morning:
         jump Frenzy
 
     scene Farmhouse_Day
+    with fade
 
-    "The rooster crows at the crack of dawn and its cry is actually heard for once, followed by a gentle knock on the door"
+    "The rooster crows at the crack of dawn and its cry is actually heard for once, followed by a gentle knock on the door."
 
     show JDW at right
+    with dissolve
 
-    jdw "Hello? I brought you some breakfast"
+    jdw "Hello? I brought you some breakfast."
 
     show VampySprite at left
+    with dissolve
 
-    mc "Thanketh thee"
+    mc "Thanketh thee."
 
-    jdw "Honey is still getting ready. He said you can join him or run some errands in town"
+    jdw "Honey is still getting ready. He said you can join him or run some errands in town."
 
     menu:
         "Help tend the farm":
@@ -380,37 +440,43 @@ label Next_Morning:
 
 label Help_Farm:
     scene Ranch_Sunset
+    with fade
+
     show JD at left
+    with dissolve
+
     show VampySprite at right
+    with dissolve
 
     if Doe == 2:
-        "Digging holes is straining for someone like [MCname]"
+        "Digging holes is straining for someone like [MCname]."
 
-        "However, once dug deep enough, the shade is quite pleasent"
+        "However, once dug deep enough, the shade is quite pleasent."
 
         jd "Phew, hey thanks for helping out, I'll throw in a bit of change for your work today."
 
         $ money = money + 5
 
-        mc "Nay, thanketh thee f'r giving me lodging"
+        mc "Nay, thanketh thee f'r giving me lodging."
 
-        jd "Ya know what, no need to sleep in the barn tonight. I'll fluff the couch cushions and you can sleep there tonight."
+        jd "Ya know what? No need to sleep in the barn tonight. I'll fluff the couch cushions and you can sleep there tonight."
 
-        mc "Art thee sure? Well thanketh thee"
+        mc "Art thee sure? Well thanketh thee."
 
     if Doe == 3:
 
         "On the porch of the Doe farm, Mrs. Doe enjoys her Honey's singing...and [MCname]'s attempt."
 
-        jd "Never gonna give you up"
+        jd "Never gonna give you up."
 
-        mc "Nev'r gonna alloweth thee down"
+        mc "Nev'r gonna alloweth thee down."
 
-        jd "Never gonna run around"
+        jd "Never gonna run around."
 
-        mc "and des'rt thee"
+        mc "and des'rt thee."
 
         show JDW
+        with dissolve
 
         jdw "Honey, it's time for dinner."
 
@@ -423,6 +489,7 @@ label Help_Farm:
 
     jump Next_Morning
 
+
 label Town_Options:
     menu:
         "Buy more supplies":
@@ -432,11 +499,14 @@ label Town_Options:
             $ Cash += 1
             jump Creek_Shenanigans
 
+
 label Strip_Mall_Fun:
     scene Clothing_Store
+    with fade
 
     if Jane == 1:
         show VampySprite at left
+        with dissolve
 
         mc "So many styles of robes!"
 
@@ -445,7 +515,9 @@ label Strip_Mall_Fun:
         mc "Hiss! An apparition hast hath appeared!"
 
         $ janedName = "Jane Dough"
+
         show JaneD at right
+        with dissolve
 
         janed "I’m not a ghost silly. I’m Jane, Jane Dough!"
 
@@ -461,12 +533,14 @@ label Strip_Mall_Fun:
 
     if Jane == 2:
         show VampySprite at left
+        with dissolve
 
         "With such a huge assortment of clothes and knicknacks, it's easy to forget what one originally came for."
 
         mc "Nay. What didst Mrs. Doe asketh f'r again?"
 
         show JaneD at right
+        with dissolve
 
         janed "Hiya QT! Need help with anything?"
 
@@ -478,12 +552,14 @@ label Strip_Mall_Fun:
 
     if Jane == 3:
         show VampySprite at left
+        with dissolve
 
         "For instance, the cover of this black book is sinister but oddly charming"
 
         mc "Ah this one looks valorous"
 
         show JaneD at right
+        with dissolve
 
         janed "Oh you're back. Why would a QT like you visit a store like this so often?"
 
@@ -505,9 +581,11 @@ label Strip_Mall_Fun:
 
 label Creek_Shenanigans:
     scene Creek_Bridge
+    with fade
 
     if Cash == 1:
         show VampySprite at left
+        with dissolve
 
         mc "Mine own! What a lovely sight..."
 
@@ -522,7 +600,9 @@ label Creek_Shenanigans:
         mc "Sir, art thee tis fine?"
 
         $ JCname = "Johnny Cash"
+
         show JC at right
+        with dissolve
 
         jc "*Puffs* yeeeeeah maan. Name’s Johnny Cash. Call me JC if you want man. *cough*"
 
@@ -534,6 +614,7 @@ label Creek_Shenanigans:
 
     if Cash == 2:
         show VampySprite at left
+        with dissolve
 
         "Fishing alone in the woods has it's own charm to it don't you think?"
 
@@ -546,6 +627,7 @@ label Creek_Shenanigans:
         "*Cough Cough*"
 
         show JC at right
+        with dissolve
 
         jc "Oh! I diiidn't think you'll be back..."
 
@@ -561,6 +643,7 @@ label Creek_Shenanigans:
 
     if Cash == 3:
         show VampySprite at left
+        with dissolve
 
         "Though, being lost in your thoughts is only useful when you have something to think about"
 
@@ -571,6 +654,7 @@ label Creek_Shenanigans:
         mc "hm?"
 
         show JC_Fishing at right
+        with dissolve
 
         jc "Oh hey man! Mind if I join you?"
 
@@ -588,6 +672,7 @@ label Creek_Shenanigans:
 
 label Frenzy:
     scene Black_Wall
+    with fade
 
     $ CurrentChap = 2
 

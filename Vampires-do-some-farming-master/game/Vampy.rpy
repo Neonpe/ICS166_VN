@@ -117,30 +117,30 @@ screen customization():
         spacing 100
 
     vbox:
-        text "{color=#d3d3d3}{size=24}{font=arial.ttf} Hair{/font}{/color}{/sizeS}"
+        text "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Hair{/font}{/color}{/sizeS}"
         hbox:
             textbutton "{color=#d3d3d3}<{/color}" action Function(changeHair, -1)
             textbutton "{color=#d3d3d3}>{/color}" action Function(changeHair, 1)
-        text "{color=#d3d3d3}{size=24}{font=arial.ttf} Eyes{/font}{/color}{/size}"
+        text "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Eyes{/font}{/color}{/size}"
         hbox:
             textbutton "{color=#d3d3d3}<{/color}" action Function(changeEyes, -1)
             textbutton "{color=#d3d3d3}>{/color}" action Function(changeEyes, 1)
-        text "{color=#d3d3d3}{size=24}{font=arial.ttf} Facial Hair{/font}{/color}{/size}"
+        text "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Facial Hair{/font}{/color}{/size}"
         hbox:
             textbutton "{color=#d3d3d3}<{/color}" action Function(changeFace, -1)
             textbutton "{color=#d3d3d3}>{/color}" action Function(changeFace, 1)
-        text "{color=#d3d3d3}{size=24}{font=arial.ttf} Shirt{/font}{/color}{/size}"
+        text "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Shirt{/font}{/color}{/size}"
         hbox:
             textbutton "{color=#d3d3d3}<{/color}" action Function(changeArms, -1)
             textbutton "{color=#d3d3d3}>{/color}" action Function(changeArms, 1)
-        text "{color=#d3d3d3}{size=24}{font=arial.ttf} Pants{/font}{/color}{/size}"
+        text "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Pants{/font}{/color}{/size}"
         hbox:
             textbutton "{color=#d3d3d3}<{/color}" action Function(changeLegs, -1)
             textbutton "{color=#d3d3d3}>{/color}" action Function(changeLegs, 1)
-        text "{color=#d3d3d3}{size=24}{font=arial.ttf} Accessories{/font}{/color}{/size}"
+        text "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Accessories{/font}{/color}{/size}"
         hbox:
             textbutton "{color=#d3d3d3}<{/color}" action Function(changeAcc, -1)
             textbutton "{color=#d3d3d3}>{/color}" action Function(changeAcc, 1)
-        textbutton "{color=#d3d3d3}{size=24}{font=arial.ttf} Done{/font}{/color}{/size}" action Return()
+        textbutton "{color=#d3d3d3}{size=24}{font=fonts/arial.ttf} Done{/font}{/color}{/size}" action Return()
 
     add "VampySprite" at center

@@ -65,6 +65,7 @@ label Does_And_Anna_Alive:
     Anna "Oh it's you again!? Unexpected but welcome company!"
     Anna "Say, do you keep coming in because you heard something from Jane?"
 
+
     menu:
         "Was she supposed to tell me something?":
             $ dialogueChoice = 1
@@ -327,7 +328,7 @@ label Does_And_Jane_Alive:
 
         mc "Hold on, if you summoned me what was that strange voice in my head talking about \"I have found you\" and \"my dreams lie within you\"?"
         janed "Wait you heard all of that? Oh that's embarrassing, the link when I summoned you must've lingered so you could hear what I was thinking."
-        mc "Actually that's a relief. I was afraid it increasing my hunger and driving me to kill more often."
+        mc "Actually that's a relief. I was afraid it was increasing my hunger and driving me to kill more often."
         mc "And what about Anna, I hate to tell you this, but I was the one who killed her."
         janed "Oh I kind of expected it was you, but I'm not completely bothered by it. I became closer with her to find out more about summoning."
         janed "It was pretty hard to connect with her anyway. She was much older than me so we didn't share many common interests."
@@ -800,7 +801,7 @@ label Anna_And_Jane_Alive:
 
         mc "Hold on, if you summoned me what was that strange voice in my head talking about \"I have found you\" and \"my dreams lie within you\"?"
         janed "Wait you heard all of that? Oh that's embarrassing, the link when I summoned you must've lingered so you could hear what I was thinking."
-        mc "Actually that's a relief. I was afraid it increasing my hunger and driving me to kill more often."
+        mc "Actually that's a relief. I was afraid it was increasing my hunger and driving me to kill more often."
         mc "In that case I'm going to head back to the farm, you should come over sometime soon."
         janed "That sounds perfect [MCname], I'll be looking forward to it."
 
@@ -996,7 +997,7 @@ label Johnny_And_Jane_Alive:
 
         mc "Hold on, if you summoned me what was that strange voice in my head talking about \"I have found you\" and \"my dreams lie within you\"?"
         janed "Wait you heard all of that? Oh that's embarrassing, the link when I summoned you must've lingered so you could hear what I was thinking."
-        mc "Actually that's a relief. I was afraid it increasing my hunger and driving me to kill more often."
+        mc "Actually that's a relief. I was afraid it was increasing my hunger and driving me to kill more often."
         mc "And what about Anna, I hate to tell you this, but I was the one who killed her."
         janed "Oh I kind of expected it was you, but I'm not completely bothered by it. I became closer with her to find out more about summoning."
         janed "It was pretty hard to connect with her anyway. She was much older than me so we didn't share many common interests."

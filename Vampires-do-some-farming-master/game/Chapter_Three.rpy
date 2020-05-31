@@ -2,13 +2,25 @@
 label Start_chp3:
     $ CurrentChap = 3
     $unknowName = "???"
+
     scene Drak_pic
+    with fade
+
     unknow "I have found you.."
+
     show VampySprite at left
+    with dissolve
+
     mc "what?!"
+
     hide VampySprite
+    with dissolve
+
     unknow "My dreams lie within you.."
+
     show VampySprite at left
+    with dissolve
+
     mc "who is't art thee??!"
     jump wake_up
 
@@ -16,7 +28,10 @@ label Start_chp3:
 label wake_up:
 
     scene Farmhouse_Bed
+    with fade
+
     show VampySprite
+    with dissolve
 
     mc "T's a dream?"
     "The rooster crows but it only amplifies [MCname]'s headache"
@@ -28,14 +43,22 @@ label wake_up:
 label meet_anna:
 
     scene Strip_Mall
+    with fade
+
     show Anna at right
+    with dissolve
+
     Anna "Excuse me, sir"
+
     show VampySprite at left
+    with dissolve
+
     mc "I understand you not? didst thee talk to me?"
     Anna "Do you believe destiny?"
     mc "What? who is't art thee?"
     Anna "I am a fortune teller, my name is Anna, follow me and I will show the path of your destiny."
     $AnnaName = "Anna"
+
     menu:
         "Nay, wend hence from me.": #trust - 1
             $ total_trust -= 1
@@ -69,9 +92,16 @@ label meet_anna:
 
 label in_Psychic_store:
     scene Psychic_store
+    with fade
+
     show Anna at right
+    with dissolve
+
     show VampySprite at left
+    with dissolve
+
     Anna "Welcome to my place, let's see what Madame Fate has in store for us. Please ask a question!"
+
     menu:
         "Who is't am i?":
             Anna "A being bound by fate. But if you can break free from your binds, you will be who you are"
@@ -83,41 +113,74 @@ label in_Psychic_store:
 
 label ask_crystal_ball:
     show VampySprite at left
+    with dissolve
+
     show Anna at right
+    with dissolve
+
     Anna "Okay, at a 10 to 1 ratio...that'll be 10 dollars, please."
     mc "Wait, what? yond's all thee did get? thee wanteth me payeth ten dollats f'r just bullshit?"
     Anna "Yes...oh, fine, since you're kind of cute,you can look at the crystal ball, it will tell you your destiny...I guess"
     mc "Fine."
+
     hide VampySprite
+    with dissolve
+
     hide Anna
+    with dissolve
+
     "[MCname] glares at crystal ball. Will it crack under pressure? No, such supernatural powers don't work yet."
+
     show VampySprite at left
+    with dissolve
+
     mc "Well enow, t's time to leaveth, i wanteth not to playeth a fartuous game with such swindler"
+
     show Anna at right
+    with dissolve
+
     Anna "No...just wait for 2 more... 5 more minutes. The ball's going to do something I swear!"
 
     scene Crystal_ball
+    with fade
+
     "Suddenly Anna disappears as the ball really does something. Though, it's not cracking, it's glowing!"
+
     $unknowName = "A Voice"
     unknow "\nQuite brightly at that."
     unknow  "\nAh, ahem, [MCname] must destroy those cloaked in chaos or..."
+
     scene Psychic_store
+    with fade
+
     "The ball stopped glowing...how unreliable..."
 
     show Anna at right
+    with dissolve
+
     Anna "*fake cough fake cough* Unfortunately, I am out of power today but the crystal ball will work for next time, I guarantee you!"
+
     show VampySprite at left
+    with dissolve
+
     mc "Wait, what? thee cullionly the crystal ball doesn't worketh?! but i heareth some..."
     Anna "I'm sorry! Please dont be mad. Here how about this one be on the house since it's your first time?"
     mc "Er.."
     Anna "Thanks for the visit, and I'll see you next time!"
+
     hide VampySprite
+    with dissolve
+
     Anna "Scary, he glared at the ball for like another 10 minutes..."
     jump after_meet_anna
 
 label after_meet_anna:
     scene Strip_Mall
+    with fade
+
     show VampySprite
+    with dissolve
+
     mc "Hmm... Yond sound seemeth has't some connection with the present day's dream"
     mc "I needeth to figure t out."
     $ Night_count = 0
@@ -131,6 +194,8 @@ label Chapter_Three_Morning:
 
 
     scene Farmhouse_Day
+    with fade
+
     "New day, New choices!"
 
     if jd_dead == True:
@@ -162,9 +227,16 @@ label Chapter_Three_Morning:
 
 label time_with_ana:
     scene Psychic_store
+    with fade
+
     show Anna at right
+    with dissolve
+
     show VampySprite at left
+    with dissolve
+
     Anna "Welcome back! What brings you here?"
+
     menu:
         "Thy power, yond's wherefore i am cometh back hither":
             $ total_trust += 1
@@ -177,6 +249,7 @@ label time_with_ana:
             #trust -1
 
     Anna "Ok, let's see what Madame Fate has in store for us, what exactly do you want to do?"
+
     menu:
         "Ask Anna some questions - $1":
             if money >= 1:
@@ -212,21 +285,37 @@ label time_with_ana:
         #for here the message will change when the trust of anna increase more
         if trust_for_anna >= 4:
             scene Crystal_ball
+            with fade
+
             unknow "\nAh make sure to feed [MCname] every now and again"
+
         if trust_for_anna >= 3:
             scene Crystal_ball
+            with fade
+
             unknow "\nThat's the entire ominous message for [MCname]"
+
         elif trust_for_anna >= 2:
             scene Crystal_ball
+            with fade
+
             unknow "\nOh hello. [MCname] is back. Oh yes!"
             unknow  "\n...Or rid them of their cloak."
+
         scene Psychic_store
+        with fade
+
         "[MCname] mumbles something about a ripoff under his breath as he pays Anna for her services."
         $ money = money - 5
 
     show VampySprite at left
+    with dissolve
+
     mc "Thanketh thee f'r the answ'rs. Farewell"
+
     show Anna at right
+    with dissolve
+    
     Anna "Thanks for the visit, see you again next time!"
     if CurrentChap == 3:
         jump Chapter_Three_Morning
