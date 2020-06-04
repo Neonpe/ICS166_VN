@@ -1,6 +1,7 @@
 ####################################################
-#   Part 0: Character Creation Screen
-#   Author: Nichole Wong
+#   PART 0 (Character Creation)
+#   Primary Author: Nichole Wong
+#   Secondary Author: Chris Goebel
 ####################################################
 init python:
 
@@ -17,7 +18,7 @@ init python:
     v = Vampy()
 
     hair, eyes, face, acc, arms, legs = 1, 1, 1, 1, 1, 1
-    maxHair, maxEyes, maxFaces, maxAcc, maxArms, maxLegs = [2, 5, 4, 2, 4, 2]
+    maxHair, maxEyes, maxFaces, maxAcc, maxArms, maxLegs = [2, 5, 4, 2, 3, 2]
 
     def changeHair(dir):
         global hair
